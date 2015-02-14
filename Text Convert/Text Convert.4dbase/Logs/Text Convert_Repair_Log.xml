@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<verifylog operation="Repair" name="Text Convert" structure="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Text Convert.4DB" data="" os="Windows Seven Business Edition, 64-bit Service Pack 1 (build 7601)">
+<start_timer time="2015-02-14T10:28:41+09:00"/>
+<step title="メンテナンスモードでデータベースを開く">
+	<warning warning_type="1" warning_num="139">データベース上に問題があります。 : 前回のデータベースのディスクへの書き込みが終了していません。</warning>
+</step>
+<step title="修復">
+	<step title="自動シーケンス番号定義を圧縮中">
+	</step>
+	<step title="データテーブルをロード中">
+		<step title="データテーブルヘッダーを圧縮中">
+		</step>
+	</step>
+	<step title="テーブル Resources のBLOBを圧縮中">
+	</step>
+	<step title="テーブル Resources のレコードを圧縮中">
+	</step>
+	<step title="テーブル [Table#0] のBLOBを圧縮中">
+	</step>
+	<step title="テーブル [Table#0] のレコードを圧縮中">
+	</step>
+	<step title="検査処理リソースの初期化">
+	</step>
+	<step title="データベースメソッドを検査">
+	</step>
+	<step title="トリガーメソッドを検査">
+	</step>
+	<step title="プロジェクトメソッドを検査">
+		<step title="Ex1">
+			<info>Ex1 : 13 lines</info>
+		</step>
+		<step title="Ex2">
+			<info>Ex2 : 12 lines</info>
+		</step>
+		<step title="Ex3">
+			<info>Ex3 : 14 lines</info>
+		</step>
+		<info>3 project methods</info>
+	</step>
+	<step title="プロジェクトフォームを検査">
+		<step title="Form1">
+			<step title="Form1">
+				<info>Form1 : 6 lines</info>
+			</step>
+		</step>
+		<step title="Form2">
+			<step title="Form2">
+				<info>Form2 : 5 lines</info>
+			</step>
+		</step>
+		<step title="Form3">
+			<step title="Form3">
+				<info>Form3 : 4 lines</info>
+			</step>
+		</step>
+		<info>3 project forms</info>
+	</step>
+	<step title="テーブルフォームを検査">
+		<info>0 table forms</info>
+	</step>
+	<step title="STR# 8010,12">
+	</step>
+	<step title="ユーザー＆グループ情報を検査">
+	</step>
+	<step title="ヘルプTipsを検査">
+	</step>
+	<step title="エクスプローラーのフォルダーを検査">
+		<step title="Trash">
+		</step>
+		<step title="CP">
+		</step>
+	</step>
+	<step title="メニューバーとメニューを検査">
+	</step>
+	<step title="Check Lists">
+	</step>
+	<step title="リンクのないメソッドを検査">
+	</step>
+	<step title="以前のファイルをバックアップに移動">
+<move from="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Text Convert.4DB" to="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Replaced Files (Repairing) 2015-02-14 10-28-41\Text Convert.4DB">
+</move>	</step>
+	<step title="新しいファイルをデータベースフォルダに作成">
+<move from="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Replaced Files (Repairing) 2015-02-14 10-28-41\_Text Convert_compacted.4DB" to="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Text Convert.4DB">
+</move>	</step>
+	<step title="以前のインデックスファイルをバックアップに移動">
+<move from="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Text Convert.4DIndy" to="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Replaced Files (Repairing) 2015-02-14 10-28-41\Text Convert.4DIndy">
+</move>	</step>
+	<step title="新しいインデックスファイルをデータベースフォルダに作成">
+<move from="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Replaced Files (Repairing) 2015-02-14 10-28-41\_Text Convert_compacted.4DIndy" to="C:\Users\miyako\Desktop\Text Convert\Text Convert.4dbase\Text Convert.4DIndy">
+</move>	</step>
+</step>
+<stop_timer time="2015-02-14T10:28:42+09:00" success="false" user_canceled="false"/>
+</verifylog>
