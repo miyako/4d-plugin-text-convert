@@ -90,3 +90,20 @@ $id:="[:^Katakana:];Fullwidth-Halfwidth"
 $rule:=""
   //株式会社4Dジャパン渋谷区道玄坂1ｰ10ｰ2
 ```
+
+```
+$src:="カキクケコ"
+$id:="Katakana-Hiragana"
+$rule:=""
+$error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
+  //かきくけこ
+```
+
+```
+$src:="それは12345ですか"
+$id:=""
+$rule:="[:^Number:] > ; # 数字だけを抜き取るぞ"
+$error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
+  //12345
+```
+
