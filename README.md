@@ -18,7 +18,7 @@ ARRAY LONGINT($codes;0)
 ARRAY TEXT($names;0)
 
 CP GET ENCODING LIST ($codes;$names)
-  //147 on Win7 (JA), 91 on OS X 10.10
+  //147 on Win7 (JA) and 91 on OS X 10.10
 ```
 
 ```
@@ -33,4 +33,21 @@ ARRAY TEXT($names;0)
 
 ICONV GET ENCODING LIST ($names)
   //393 on Windows 7 and 345 on OS X 10.10
+```
+
+Convert to EUC-JP and back
+```
+$err:=CP Convert from text ("あいうえお";$euc;51932)
+$err:=CP Get good encodings ($euc;$codepages)
+$err:=CP Convert to text ($euc;$unicode;$code)
+```
+
+```
+$err:=ICU Convert from text ("あいうえお";"euc-jp-2007";$euc)
+$err:=ICU Convert to text ($euc;"euc-jp-2007";$unicode)
+```
+
+```
+$err:=CP Convert from text ("あいうえお";$euc;51932)
+$err:=CP Convert to text ($euc;$unicode;51932)
 ```
