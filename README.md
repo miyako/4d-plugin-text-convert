@@ -38,8 +38,7 @@ ICONV GET ENCODING LIST ($names)
 Convert to EUC-JP and back
 ```
 $err:=CP Convert from text ("あいうえお";$euc;51932)
-$err:=CP Get good encodings ($euc;$codepages)
-$err:=CP Convert to text ($euc;$unicode;$code)
+$err:=CP Convert to text ($euc;$unicode;51932)
 ```
 
 ```
@@ -48,6 +47,8 @@ $err:=ICU Convert to text ($euc;"euc-jp-2007";$unicode)
 ```
 
 ```
-$err:=CP Convert from text ("あいうえお";$euc;51932)
-$err:=CP Convert to text ($euc;$unicode;51932)
+TEXT TO BLOB("あいうえお";$utf8;UTF8 text without length)
+$err:=ICONV Convert ("utf-8";"euc-jp";$utf8;$euc)
+$err:=ICONV Convert ("euc-jp";"utf-8";$euc;$utf8)
+$original:=BLOB to text($utf8;UTF8 text without length)
 ```
