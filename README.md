@@ -107,3 +107,10 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //12345
 ```
 
+```
+$src:="abcde"
+$id:=""
+$rule:="a > A; # aをAに変換するだけだ"
+$error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
+  //Abcde
+```
