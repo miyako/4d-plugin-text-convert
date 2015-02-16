@@ -74,6 +74,10 @@ $test4:=JIS Convert from text ("漢字ｶﾀｶﾅabc漢字abcｶﾀｶﾅ";JIS8
 $result:=JIS Convert to text ($test4;JIS8)
 ALERT($result)
 ```
+
+ICU
+---
+
 * Transliteration
 
 ```
@@ -123,12 +127,24 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //toransufōmudesune
 ```
 
-Normalization
+* Normalization
 
 ```
 $error:=ICU Normalize text ("ががが";ICU Normalize NFD;$normalized)
 $length:=Length($normalized)
   //6; because NFD splits "が" to letters and combining accent characters
+```
+
+* Guess
+
+```
+$err:=ICU Convert from text ("あいうえお";"euc-jp-2007";$euc)
+$err:=ICU Get good encodings ($euc;$encodings;$languages;$confidences)
+```
+
+```
+$err:=CP Convert from text ("あいうえお";$euc;51932)
+$err:=CP Get good encodings ($euc;$codepages)
 ```
 
 
