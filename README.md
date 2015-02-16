@@ -122,3 +122,14 @@ $rule:=""
 $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //toransufōmudesune
 ```
+
+Normalization
+
+```
+$error:=ICU Normalize text ("ががが";ICU Normalize NFD;$normalized)
+$length:=Length($normalized)
+  //6; because NFD splits "が" to letters and combining accent characters
+```
+
+
+  
