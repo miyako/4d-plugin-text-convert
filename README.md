@@ -135,7 +135,8 @@ $length:=Length($normalized)
   //6; because NFD splits "が" to letters and combining accent characters
 ```
 
-* Guess
+Detect
+---
 
 ```
 $err:=ICU Convert from text ("あいうえお";"euc-jp-2007";$euc)
