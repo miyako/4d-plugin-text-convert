@@ -52,11 +52,11 @@
 		D13116F41A03C7AF00DE1322 /* ARRAY_DATE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D13116F21A03C7AF00DE1322 /* ARRAY_DATE.cpp */; };
 		D13116F51A03C7AF00DE1322 /* ARRAY_DATE.h in Headers */ = {isa = PBXBuildFile; fileRef = D13116F31A03C7AF00DE1322 /* ARRAY_DATE.h */; };
 		D134D4AC1A030BA0008D14EF /* manifest.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = D134D4A91A030B06008D14EF /* manifest.json */; };
+		D16FD3A81A91C4C40009C733 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA31081A8DF17500CF336D /* libiconv.2.dylib */; };
+		D16FD3A91A91C4C40009C733 /* libicudata.54.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA31091A8DF17500CF336D /* libicudata.54.1.dylib */; };
+		D16FD3AA1A91C4C40009C733 /* libicui18n.54.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA310A1A8DF17500CF336D /* libicui18n.54.1.dylib */; };
+		D16FD3AB1A91C4C40009C733 /* libicuuc.54.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA310B1A8DF17500CF336D /* libicuuc.54.1.dylib */; };
 		D175D9CD1A02E8DD0006B569 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D175D9CC1A02E8DD0006B569 /* CoreGraphics.framework */; };
-		D1C17FA51A8EE5B400C05660 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA31081A8DF17500CF336D /* libiconv.2.dylib */; };
-		D1C17FA61A8EE5B400C05660 /* libicudata.54.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA31091A8DF17500CF336D /* libicudata.54.1.dylib */; };
-		D1C17FA71A8EE5B400C05660 /* libicui18n.54.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA310A1A8DF17500CF336D /* libicui18n.54.1.dylib */; };
-		D1C17FA81A8EE5B400C05660 /* libicuuc.54.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CA310B1A8DF17500CF336D /* libicuuc.54.1.dylib */; };
 		D1CA31131A8EAA2100CF336D /* cpmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D1CA31111A8EAA2100CF336D /* cpmap.cpp */; };
 		D1CA31141A8EAA2100CF336D /* cpmap.h in Headers */ = {isa = PBXBuildFile; fileRef = D1CA31121A8EAA2100CF336D /* cpmap.h */; };
 /* End PBXBuildFile section */
@@ -137,10 +137,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1C17FA51A8EE5B400C05660 /* libiconv.2.dylib in Frameworks */,
-				D1C17FA61A8EE5B400C05660 /* libicudata.54.1.dylib in Frameworks */,
-				D1C17FA71A8EE5B400C05660 /* libicui18n.54.1.dylib in Frameworks */,
-				D1C17FA81A8EE5B400C05660 /* libicuuc.54.1.dylib in Frameworks */,
+				D16FD3A81A91C4C40009C733 /* libiconv.2.dylib in Frameworks */,
+				D16FD3A91A91C4C40009C733 /* libicudata.54.1.dylib in Frameworks */,
+				D16FD3AA1A91C4C40009C733 /* libicui18n.54.1.dylib in Frameworks */,
+				D16FD3AB1A91C4C40009C733 /* libicuuc.54.1.dylib in Frameworks */,
 				D13116C71A03B5B600DE1322 /* AppKit.framework in Frameworks */,
 				D175D9CD1A02E8DD0006B569 /* CoreGraphics.framework in Frameworks */,
 				D130064F12F02D9700702C0E /* Cocoa.framework in Frameworks */,
@@ -466,6 +466,10 @@
 					Convert.bundle/Contents/MacOS,
 					"$(BUILT_PRODUCTS_DIR)/Text",
 					Convert.bundle/Contents/MacOS,
+					"$(BUILT_PRODUCTS_DIR)/Text",
+					Convert.bundle/Contents/MacOS,
+					"$(BUILT_PRODUCTS_DIR)/Text",
+					Convert.bundle/Contents/MacOS,
 				);
 				LIBRARY_STYLE = Bundle;
 				OTHER_CFLAGS = "";
@@ -507,6 +511,10 @@
 					Convert.bundle/Contents/MacOS,
 					"$(BUILT_PRODUCTS_DIR)/Text",
 					Convert.bundle/Contents/MacOS,
+					"$(BUILT_PRODUCTS_DIR)/Text",
+					Convert.bundle/Contents/MacOS,
+					"$(BUILT_PRODUCTS_DIR)/Text",
+					Convert.bundle/Contents/MacOS,
 				);
 				LIBRARY_STYLE = Bundle;
 				OTHER_CFLAGS = "";
@@ -542,6 +550,12 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Text",
+					Convert.4dbase/Plugins/Text,
+					Convert.bundle/Contents/MacOS,
+					"$(PROJECT_DIR)/Text",
+					Convert.4dbase/Plugins/Text,
+					Convert.bundle/Contents/MacOS,
 					"$(PROJECT_DIR)/Text",
 					Convert.4dbase/Plugins/Text,
 					Convert.bundle/Contents/MacOS,

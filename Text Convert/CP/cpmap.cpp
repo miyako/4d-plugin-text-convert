@@ -133,10 +133,8 @@ UInt32 _CFStringConvertEncodingToWindowsCodepage(CFStringEncoding encoding)
 			codepage = 50220;
 			break;	
 			
-        case kCFStringEncodingISO_2022_JP_2 :
-            codepage = 0;
-            break;
-            
+        case kCFStringEncodingISO_2022_JP_1 :              
+        case kCFStringEncodingISO_2022_JP_2 :            
         case kCFStringEncodingISO_2022_JP_3 :
             codepage = 0;
             break;	
@@ -266,6 +264,7 @@ TextEncoding TECConvertWindowsCodepageToTextEncoding(UInt32 codepage)
 	switch(codepage)
 	{
 		case 20932 :
+		case 51932 :            
 			encoding = kTextEncodingEUC_JP;
 			break;
 			
