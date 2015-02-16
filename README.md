@@ -12,7 +12,7 @@ In addition, there are commands to guess the possible encoding of a string, perf
 
 Example
 ---
-Get the list of applicable encodings.
+* Get the list of applicable encodings.
 ```
 ARRAY LONGINT($codes;0)
 ARRAY TEXT($names;0)
@@ -35,7 +35,7 @@ ICONV GET ENCODING LIST ($names)
   //393 on Windows 7 and 345 on OS X 10.10
 ```
 
-Convert to EUC-JP and back
+* Convert to EUC-JP and back.
 ```
 $err:=CP Convert from text ("あいうえお";$euc;51932)
 $err:=CP Convert to text ($euc;$unicode;51932)
@@ -51,4 +51,42 @@ TEXT TO BLOB("あいうえお";$utf8;UTF8 text without length)
 $err:=ICONV Convert ("utf-8";"euc-jp";$utf8;$euc)
 $err:=ICONV Convert ("euc-jp";"utf-8";$euc;$utf8)
 $original:=BLOB to text($utf8;UTF8 text without length)
+```
+JIS 
+---
+
+Various wayst to encode JIS (not to be confused with ISO2-22-JP).
+
+```
+$test1:=JIS Convert from text ("ｱ";JIS7_ESC)
+$result:=JIS Convert to text ($test1;JIS7_ESC)
+ALERT($result)
+
+$test2:=JIS Convert from text ("ｱ";JIS7_SO_SI)
+$result:=JIS Convert to text ($test1;JIS7_SO_SI)
+ALERT($result)
+
+$test3:=JIS Convert from text ("ｱ";JIS8)
+$result:=JIS Convert to text ($test1;JIS8)
+ALERT($result)
+
+$test4:=JIS Convert from text ("漢字ｶﾀｶﾅabc漢字abcｶﾀｶﾅ";JIS8)
+$result:=JIS Convert to text ($test4;JIS8)
+ALERT($result)
+```
+* Transliteration
+
+```
+$src:="Kaloudis"
+$id:="Latin-Cyrillic"
+$rule:=""
+$error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
+  //Калоудис
+```
+
+```
+$src:="株式会社４Ｄジャパン渋谷区道玄坂１ー１０ー２"
+$id:="[:^Katakana:];Fullwidth-Halfwidth"
+$rule:=""
+  //株式会社4Dジャパン渋谷区道玄坂1ｰ10ｰ2
 ```
