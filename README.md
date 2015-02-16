@@ -114,3 +114,11 @@ $rule:="a > A; # aをAに変換するだけだ"
 $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //Abcde
 ```
+
+```
+$src:="トランスフォームデスネ"
+$id:="-Latin"
+$rule:=""
+$error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
+  //toransufōmudesune
+```
