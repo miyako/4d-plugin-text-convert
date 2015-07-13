@@ -101,7 +101,11 @@ CFStringEncoding _CFStringConvertWindowsCodepageToEncoding(UInt32 codepage)
 		case 58010 :
 			encoding =  kCFStringEncodingKOI8_U;
 			break;
-			
+
+        case 932 :
+            encoding =  kCFStringEncodingShiftJIS_X0213;
+            break;
+            
 		default :
 			encoding = CFStringConvertWindowsCodepageToEncoding(codepage);
 			break;	
@@ -180,7 +184,8 @@ UInt32 _CFStringConvertEncodingToWindowsCodepage(CFStringEncoding encoding)
 			break;				
 			
 		case kCFStringEncodingShiftJIS :	
-        case kCFStringEncodingShiftJIS_X0213_00:    
+		case kCFStringEncodingShiftJIS_X0213 :	            
+        case kCFStringEncodingShiftJIS_X0213_00 :    
 			codepage = 932;
 			break;					
 			
@@ -303,6 +308,10 @@ TextEncoding TECConvertWindowsCodepageToTextEncoding(UInt32 codepage)
 		case 856 :
 			encoding =  kTextEncodingDOSHebrew;
 			break;
+            
+        case 932 :
+            encoding =  kTextEncodingShiftJIS_X0213_00;
+            break;            
 			
 		case 951 :
 			encoding =  kTextEncodingBig5_HKSCS_1999;
