@@ -14,7 +14,7 @@
 		<string>https://github.com/miyako/4d-plugin-text-convert.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Text Convert/Text Convert.xcodeproj</string>
+	<string>text-convert/Text Convert.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7578A2FB0978EF7B9EE6F60352ED4114FE31077D</key>

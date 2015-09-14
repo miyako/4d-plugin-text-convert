@@ -185,7 +185,7 @@ UInt32 _CFStringConvertEncodingToWindowsCodepage(CFStringEncoding encoding)
 			
 		case kCFStringEncodingShiftJIS :	
 		case kCFStringEncodingShiftJIS_X0213 :	            
-        case kCFStringEncodingShiftJIS_X0213_00 :    
+        //case kCFStringEncodingShiftJIS_X0213_00 :
 			codepage = 932;
 			break;					
 			
