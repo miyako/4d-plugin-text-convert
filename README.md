@@ -6,7 +6,7 @@ A plugin to perform various text convert operartions that are not currently supp
 
 | carbon | cocoa | win32 | win64 |
 |:------:|:-----:|:---------:|:---------:|
-|10.6|10.8|⭕️|⭕️|
+|10.6|10.8|🆗|🆗|
 
 About
 ---
