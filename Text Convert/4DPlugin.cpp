@@ -1079,7 +1079,8 @@ void CP_Get_best_encoding(sLONG_PTR *pResult, PackagePtr pParams)
                 }
                 
             }
-            
+					
+					TECDisposeSniffer(sniffer);
         }
         
     }	
@@ -1433,7 +1434,8 @@ void CP_Get_good_encodings(sLONG_PTR *pResult, PackagePtr pParams)
                 }
             
             }
-  							            
+  			
+					TECDisposeSniffer(sniffer);
         }
         
     }	
