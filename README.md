@@ -87,6 +87,14 @@ ICU
 * Transliteration
 
 ```
+$src:="ﾊﾝｶｸゼンカクひらがな"
+$id:="[:East Asian Width=Halfwidth:];Katakana-Hiragana"
+$rule:=""
+$error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
+  //はんかくゼンカクひらがな
+```
+
+```
 $src:="Kaloudis"
 $id:="Latin-Cyrillic"
 $rule:=""
