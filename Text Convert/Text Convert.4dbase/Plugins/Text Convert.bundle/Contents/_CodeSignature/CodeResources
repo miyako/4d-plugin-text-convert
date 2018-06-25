@@ -96,7 +96,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hHBU2FGC8IYoSb9REHwABNJzTCw=
+			oalXvqjM4IWeOk6frw38lzoKDNU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -108,42 +108,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>MacOS/libiconv.2.dylib</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			XOYUg4Ctn6aHH/GLKjB37mAGLXY=
-			</data>
-			<key>requirement</key>
-			<string>identifier "libiconv.2" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>
-		</dict>
-		<key>MacOS/libicudata.54.1.dylib</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			xqL7Ws3xMQm/t4QUqXgfnGQwCzQ=
-			</data>
-			<key>requirement</key>
-			<string>identifier "libicudata.54" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>
-		</dict>
-		<key>MacOS/libicui18n.54.1.dylib</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			3SJPxKEo0is3KwHxGI4TlSQbx6g=
-			</data>
-			<key>requirement</key>
-			<string>identifier "libicui18n.54" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>
-		</dict>
-		<key>MacOS/libicuuc.54.1.dylib</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			o8Yp8GgNGAUQPaOZlMCzg9v/4PM=
-			</data>
-			<key>requirement</key>
-			<string>identifier "libicuuc.54" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>
-		</dict>
 		<key>QuickLook/Thumbnail.png</key>
 		<dict>
 			<key>hash</key>
@@ -401,11 +365,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hHBU2FGC8IYoSb9REHwABNJzTCw=
+			oalXvqjM4IWeOk6frw38lzoKDNU=
 			</data>
 			<key>hash2</key>
 			<data>
-			oz1g//Xrf/R6/sheHAsvRl4bhP2qytnMAIWiE6VG54o=
+			uKoHPVihgzzc9s2qQf1uWxOGsyLx6XFaMfDgk1LqKJY=
 			</data>
 			<key>optional</key>
 			<true/>
