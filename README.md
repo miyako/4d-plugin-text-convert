@@ -74,7 +74,7 @@ $original:=BLOB to text($utf8;UTF8 text without length)
 JIS 
 ---
 
-Various wayst to encode JIS (not to be confused with ISO2-22-JP).
+Various wayst to encode JIS (not to be confused with ISO-2022-JP).
 
 ```
 $test1:=JIS Convert from text ("ｱ";JIS7_ESC)
