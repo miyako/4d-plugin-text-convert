@@ -1,12 +1,18 @@
 # 4d-plugin-text-convert
 
-A plugin to perform various text convert operartions that are not currently support in 4D.
+A plugin to perform various text convert operartions that are not currently support in 4D
 
-##Platform
+based on [iconv](https://www.gnu.org/software/libiconv/) and [ICU](http://site.icu-project.org/home)
+
+### Platform
 
 | carbon | cocoa | win32 | win64 |
 |:------:|:-----:|:---------:|:---------:|
-|🆗|🆗|🆗|🆗|
+|<img src="https://cloud.githubusercontent.com/assets/1725068/22371562/1b091f0a-e4db-11e6-8458-8653954a7cce.png" width="24" height="24" />|<img src="https://cloud.githubusercontent.com/assets/1725068/22371562/1b091f0a-e4db-11e6-8458-8653954a7cce.png" width="24" height="24" />|<img src="https://cloud.githubusercontent.com/assets/1725068/22371562/1b091f0a-e4db-11e6-8458-8653954a7cce.png" width="24" height="24" />|<img src="https://cloud.githubusercontent.com/assets/1725068/22371562/1b091f0a-e4db-11e6-8458-8653954a7cce.png" width="24" height="24" />|
+
+### Version
+
+<img src="https://cloud.githubusercontent.com/assets/1725068/18940649/21945000-8645-11e6-86ed-4a0f800e5a73.png" width="32" height="32" /> <img src="https://cloud.githubusercontent.com/assets/1725068/18940648/2192ddba-8645-11e6-864d-6d5692d55717.png" width="32" height="32" /> <img src="https://user-images.githubusercontent.com/1725068/41266195-ddf767b2-6e30-11e8-9d6b-2adf6a9f57a5.png" width="32" height="32" />
 
 About
 ---
@@ -16,9 +22,14 @@ The plugin provides interface to the ICU (5.4.1) and LIBICONV (1.14) libraries, 
 
 In addition, there are commands to guess the possible encoding of a string, perform Unicode [Transform](http://userguide.icu-project.org/transforms/general) or apply [Normalization](http://userguide.icu-project.org/transforms/normalization).
 
-Example
----
-* Get the list of applicable encodings.
+### Releases
+
+[1.1](https://github.com/miyako/4d-plugin-text-convert/releases/tag/1.1)
+
+### Examples
+
+* Get the list of applicable encodings
+
 ```
 ARRAY LONGINT($codes;0)
 ARRAY TEXT($names;0)
@@ -41,7 +52,8 @@ ICONV GET ENCODING LIST ($names)
   //393 on Windows 7 and 345 on OS X 10.10
 ```
 
-* Convert to EUC-JP and back.
+* Convert to EUC-JP and back
+
 ```
 $err:=CP Convert from text ("あいうえお";$euc;51932)
 $err:=CP Convert to text ($euc;$unicode;51932)
@@ -58,6 +70,7 @@ $err:=ICONV Convert ("utf-8";"euc-jp";$utf8;$euc)
 $err:=ICONV Convert ("euc-jp";"utf-8";$euc;$utf8)
 $original:=BLOB to text($utf8;UTF8 text without length)
 ```
+
 JIS 
 ---
 
@@ -149,8 +162,7 @@ $length:=Length($normalized)
   //6; because NFD splits "が" to letters and combining accent characters
 ```
 
-Detect
----
+* Detect
 
 ```
 $err:=ICU Convert from text ("あいうえお";"euc-jp-2007";$euc)
@@ -161,6 +173,3 @@ $err:=ICU Get good encodings ($euc;$encodings;$languages;$confidences)
 $err:=CP Convert from text ("あいうえお";$euc;51932)
 $err:=CP Get good encodings ($euc;$codepages)
 ```
-
-
-  
