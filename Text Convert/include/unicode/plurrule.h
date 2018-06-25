@@ -1,6 +1,8 @@
+// © 2016 and later: Unicode, Inc. and others.
+// License & terms of use: http://www.unicode.org/copyright.html
 /*
 *******************************************************************************
-* Copyright (C) 2008-2014, International Business Machines Corporation and
+* Copyright (C) 2008-2015, International Business Machines Corporation and
 * others. All Rights Reserved.
 *******************************************************************************
 *
@@ -27,6 +29,9 @@
 
 #include "unicode/format.h"
 #include "unicode/upluralrules.h"
+#ifndef U_HIDE_INTERNAL_API
+#include "unicode/numfmt.h"
+#endif  /* U_HIDE_INTERNAL_API */
 
 /**
  * Value returned by PluralRules::getUniqueKeywordValue() when there is no
@@ -38,7 +43,8 @@
 U_NAMESPACE_BEGIN
 
 class Hashtable;
-class FixedDecimal;
+class IFixedDecimal;
+class VisibleDigitsWithExponent;
 class RuleChain;
 class PluralRuleParser;
 class PluralKeywordEnumeration;
@@ -163,7 +169,7 @@ class SharedPluralRules;
  * <p>
  * The difference between 'in' and 'within' is that 'in' only includes
  * integers in the specified range, while 'within' includes all values.
- * Using 'within' with a range_list consisting entirely of values is the 
+ * Using 'within' with a range_list consisting entirely of values is the
  * same as using 'in' (it's not an error).
  *</p>
  * <p>
@@ -301,7 +307,7 @@ public:
 
     /**
      * For ICU use only.
-     * creates a  SharedPluralRules object 
+     * creates a  SharedPluralRules object
      * @internal
      */
     static PluralRules* U_EXPORT2 internalForLocale(const Locale& locale, UPluralType type, UErrorCode& status);
@@ -316,7 +322,7 @@ public:
     static const SharedPluralRules* U_EXPORT2 createSharedInstance(
             const Locale& locale, UPluralType type, UErrorCode& status);
 
-    
+
 #endif  /* U_HIDE_INTERNAL_API */
 
     /**
@@ -343,9 +349,29 @@ public:
 
 #ifndef U_HIDE_INTERNAL_API
     /**
+     * Given a number and a format, returns the keyword of the first applicable
+     * rule for this PluralRules object.
+     * Note: This internal preview interface may be removed in the future if
+     * an architecturally cleaner solution reaches stable status.
+     * @param obj The numeric object for which the rule should be determined.
+     * @param fmt The NumberFormat specifying how the number will be formatted
+     *        (this can affect the plural form, e.g. "1 dollar" vs "1.0 dollars").
+     * @param status  Input/output parameter. If at entry this indicates a
+     *                failure status, the method returns immediately; otherwise
+     *                this is set to indicate the outcome of the call.
+     * @return The keyword of the selected rule. Undefined in the case of an error.
+     * @internal ICU 59 technology preview, may be removed in the future
+     */
+    UnicodeString select(const Formattable& obj, const NumberFormat& fmt, UErrorCode& status) const;
+
+    /**
       * @internal
       */
-    UnicodeString select(const FixedDecimal &number) const;
+    UnicodeString select(const IFixedDecimal &number) const;
+    /**
+      * @internal
+      */
+    UnicodeString select(const VisibleDigitsWithExponent &number) const;
 #endif  /* U_HIDE_INTERNAL_API */
 
     /**
@@ -360,21 +386,24 @@ public:
      */
     StringEnumeration* getKeywords(UErrorCode& status) const;
 
+#ifndef U_HIDE_DEPRECATED_API
     /**
-     * Returns a unique value for this keyword if it exists, else the constant
-     * UPLRULES_NO_UNIQUE_VALUE.
+     * Deprecated Function, does not return useful results.
+     *
+     * Originally intended to return a unique value for this keyword if it exists,
+     * else the constant UPLRULES_NO_UNIQUE_VALUE.
      *
      * @param keyword The keyword.
-     * @return        The unique value that generates the keyword, or
-     *                UPLRULES_NO_UNIQUE_VALUE if the keyword is undefined or there is no
-     *                unique value that generates this keyword.
-     * @stable ICU 4.8
+     * @return        Stub deprecated function returns UPLRULES_NO_UNIQUE_VALUE always.
+     * @deprecated ICU 55
      */
     double getUniqueKeywordValue(const UnicodeString& keyword);
 
     /**
-     * Returns all the values for which select() would return the keyword.  If
-     * the keyword is unknown, returns no values, but this is not an error.  If
+     * Deprecated Function, does not produce useful results.
+     *
+     * Originally intended to return all the values for which select() would return the keyword.
+     * If the keyword is unknown, returns no values, but this is not an error.  If
      * the number of values is unlimited, returns no values and -1 as the
      * count.
      *
@@ -384,15 +413,16 @@ public:
      * @param dest         Array into which to put the returned values.  May
      *                     be NULL if destCapacity is 0.
      * @param destCapacity The capacity of the array, must be at least 0.
-     * @param status       The error code.
+     * @param status       The error code. Deprecated function, always sets U_UNSUPPORTED_ERROR.
      * @return             The count of values available, or -1.  This count
      *                     can be larger than destCapacity, but no more than
      *                     destCapacity values will be written.
-     * @stable ICU 4.8
+     * @deprecated ICU 55
      */
     int32_t getAllKeywordValues(const UnicodeString &keyword,
                                 double *dest, int32_t destCapacity,
                                 UErrorCode& status);
+#endif  /* U_HIDE_DEPRECATED_API */
 
     /**
      * Returns sample values for which select() would return the keyword.  If
