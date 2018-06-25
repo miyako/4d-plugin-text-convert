@@ -4,6 +4,8 @@ A plugin to perform various text convert operartions that are not currently supp
 
 based on [iconv](https://www.gnu.org/software/libiconv/) and [ICU](http://site.icu-project.org/home)
 
+LIBJPNとの違いについては[blog](http://www.4d.com/jp/blog/text-convert.html)を参照してください
+
 ### Platform
 
 | carbon | cocoa | win32 | win64 |
