@@ -1,1 +1,74 @@
-﻿{"name":"Text Convert","id":20000,"commands":[{"theme":"ICU","syntax":"ICU GET ENCODING LIST(&Y)"},{"theme":"ICU","syntax":"ICU Get good encodings(&O;&Y;&Y;&Y):L"},{"theme":"ICU","syntax":"ICU Get best encoding(&O;&T;&T;&L):L"},{"theme":"ICU","syntax":"ICU Normalize text(&T;&L;&T):L"},{"theme":"ICU","syntax":"ICU Transform text(&T;&T;&L;&T;&T):L"},{"theme":"ICU","syntax":"ICU Get error text(&L):T"},{"theme":"ICU","syntax":"ICU Convert to text(&O;&T;&T):L"},{"theme":"ICU","syntax":"ICU Convert from text(&T;&T;&O):L"},{"theme":"ICONV","syntax":"ICONV Convert(&T;&T;&O;&O):L"},{"theme":"JIS","syntax":"JIS Convert to text(&O;&L):T"},{"theme":"JIS","syntax":"JIS Convert from text(&T;&L):O"},{"theme":"ICONV","syntax":"ICONV GET ENCODING LIST(&Y)"},{"theme":"CP","syntax":"CP GET ENCODING LIST(&Y;&Y)"},{"theme":"CP","syntax":"CP Get best encoding(&O;&L):L"},{"theme":"CP","syntax":"CP Convert from text(&T;&O;&L):L"},{"theme":"CP","syntax":"CP Convert to text(&O;&T;&L):L"},{"theme":"CP","syntax":"CP Get good encodings(&O;&Y):L"}]}
+﻿{
+	"name": "Text Convert",
+	"id": 20000,
+	"commands": [
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU GET ENCODING LIST(&Y)"
+							 },
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU Get good encodings(&O;&Y;&Y;&Y):L"
+							 },
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU Get best encoding(&O;&T;&T;&L):L"
+							 },
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU Normalize text(&T;&L;&T):L"
+							 },
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU Transform text(&T;&T;&L;&T;&T):L"
+							 },
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU Get error text(&L):T"
+							 },
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU Convert to text(&O;&T;&T):L"
+							 },
+							 {
+							 "theme": "ICU",
+							 "syntax": "ICU Convert from text(&T;&T;&O):L"
+							 },
+							 {
+							 "theme": "ICONV",
+							 "syntax": "ICONV Convert(&T;&T;&O;&O):L"
+							 },
+							 {
+							 "theme": "JIS",
+							 "syntax": "JIS Convert to text(&O;&L):T"
+							 },
+							 {
+							 "theme": "JIS",
+							 "syntax": "JIS Convert from text(&T;&L):O"
+							 },
+							 {
+							 "theme": "ICONV",
+							 "syntax": "ICONV GET ENCODING LIST(&Y)"
+							 },
+							 {
+							 "theme": "CP",
+							 "syntax": "CP GET ENCODING LIST(&Y;&Y)"
+							 },
+							 {
+							 "theme": "CP",
+							 "syntax": "CP Get best encoding(&O;&L):L"
+							 },
+							 {
+							 "theme": "CP",
+							 "syntax": "CP Convert from text(&T;&O;&L):L"
+							 },
+							 {
+							 "theme": "CP",
+							 "syntax": "CP Convert to text(&O;&T;&L):L"
+							 },
+							 {
+							 "theme": "CP",
+							 "syntax": "CP Get good encodings(&O;&Y):L"
+							 }
+							 ]
+}
