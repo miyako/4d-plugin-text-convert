@@ -26,7 +26,9 @@ In addition, there are commands to guess the possible encoding of a string, perf
 
 ### Releases
 
-[1.1](https://github.com/miyako/4d-plugin-text-convert/releases/tag/1.1)
+[2.0](https://github.com/miyako/4d-plugin-text-convert/releases/tag/2.0) static library
+
+[1.1](https://github.com/miyako/4d-plugin-text-convert/releases/tag/1.1) dynamic library
 
 ### Examples
 
