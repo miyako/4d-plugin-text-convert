@@ -26,6 +26,8 @@ In addition, there are commands to guess the possible encoding of a string, perf
 
 ### Releases
 
+![preemption xx](https://user-images.githubusercontent.com/1725068/41327179-4e839948-6efd-11e8-982b-a670d511e04f.png)
+
 [2.0](https://github.com/miyako/4d-plugin-text-convert/releases/tag/2.0) static library
 
 [1.1](https://github.com/miyako/4d-plugin-text-convert/releases/tag/1.1) dynamic library
