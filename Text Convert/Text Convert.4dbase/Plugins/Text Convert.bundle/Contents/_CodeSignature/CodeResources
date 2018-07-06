@@ -96,7 +96,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oalXvqjM4IWeOk6frw38lzoKDNU=
+			YF/SU1LePr68aqOzD6WbBSftqro=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -365,11 +365,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oalXvqjM4IWeOk6frw38lzoKDNU=
+			YF/SU1LePr68aqOzD6WbBSftqro=
 			</data>
 			<key>hash2</key>
 			<data>
-			uKoHPVihgzzc9s2qQf1uWxOGsyLx6XFaMfDgk1LqKJY=
+			eIUmcenox1J6MF+4E9P+1r/m0NzoDWQ7QsPbX9aoV+8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -389,139 +389,29 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kFIQCSvaAArzwJAwy2CwYofxjkk=
+			jgOzj/RpunwYqyoFGOdUQF/bfss=
 			</data>
 			<key>hash2</key>
 			<data>
-			Oe8ft+G3BE/dWH5/uL+xiy68mSHEwlxKeTt48KF6pwA=
-			</data>
-		</dict>
-		<key>Windows/icudt54.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			bhH48j1Fk1yyazK4jqWUudgNIgA=
-			</data>
-			<key>hash2</key>
-			<data>
-			40bYOhJXaMuKOE+cPuRPiCmMCzi6fIKT8qEQgHJtH/I=
-			</data>
-		</dict>
-		<key>Windows/icuin54.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			reQnKns8aRwn/emw+Kt93Vxt8x8=
-			</data>
-			<key>hash2</key>
-			<data>
-			gSF2o77p/HDRrz5h1QrxiKnk9O2m3SROMNBtQ0T58xM=
-			</data>
-		</dict>
-		<key>Windows/icuuc54.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ybN95ySFtO4vNbi3vuKQOyCmcf4=
-			</data>
-			<key>hash2</key>
-			<data>
-			1xiAnAJPwBfPccXrKdVKLs7NaTRpz1lsnfDcYIiNT0w=
-			</data>
-		</dict>
-		<key>Windows/msvcp100.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+x3Mur1YehJQgSer/3s8i/bCuxo=
-			</data>
-			<key>hash2</key>
-			<data>
-			vLToFDMiAl8bTGbnXb//BJUzi2F8EDsKwUKZ1brdQYU=
-			</data>
-		</dict>
-		<key>Windows/msvcr100.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			u/NB5+2ZR94LXYTZPKC8TIvrVQA=
-			</data>
-			<key>hash2</key>
-			<data>
-			ZJp6uOO1wJQIEuQOr8jwBJebtIv8j0vH258svN1xU0Q=
+			PVFebYt9Xe88A/wXnL6F6qRqVNd/VToug8Jp4N5Sw4Q=
 			</data>
 		</dict>
 		<key>Windows64/Text Convert.4DX</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fX4kbehw4358lQ/1pLZTwYJngTU=
+			EVQ6CAvLR3JvR1bmbL9t4NOHfKE=
 			</data>
 			<key>hash2</key>
 			<data>
-			XtFH60rT5bpiRT5NQ/UJcVXfOGURxtfXndbvDOxS8+Y=
-			</data>
-		</dict>
-		<key>Windows64/icudt54.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ElnY4Go9j2SxjvJutVZ29IR9jQk=
-			</data>
-			<key>hash2</key>
-			<data>
-			c7lZEzeaQAyVwd64Hk5ccVR0lrX+YPosXKA2q2rU2Bk=
-			</data>
-		</dict>
-		<key>Windows64/icuin54.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ZFK4PfWHEFS7CoYgTFjR8uqhMQc=
-			</data>
-			<key>hash2</key>
-			<data>
-			GtNaZScS9bjAaj3bDHkzZW+35Izg0JbfSmMGWOb0Y9Q=
-			</data>
-		</dict>
-		<key>Windows64/icuuc54.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			RVgChc/MODKMdJ1TNBTsx83MWx8=
-			</data>
-			<key>hash2</key>
-			<data>
-			vuEgBbJ/gY4U8FWVcFJcRBfrleVNpllrf4Ht4UtnJn8=
-			</data>
-		</dict>
-		<key>Windows64/msvcp100.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			0YKwZWmW/QMtWUIVkB7Evz9f0s8=
-			</data>
-			<key>hash2</key>
-			<data>
-			0lcKe3F0mwHEXoFI0WqijqgR/cdcByTkk0+7YpU4dQM=
-			</data>
-		</dict>
-		<key>Windows64/msvcr100.dll</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			H3z8469mM2jlJgn5lfM1f610v9Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			MePeypCaSN4PgJ+KDlTqcgy2kgoUJ/kJijbd6iUNosM=
+			2icOGhJ2gsCg//gLEoqMs2H0OC1dWtt/Fxl7ZqIRLo4=
 			</data>
 		</dict>
 		<key>manifest.json</key>
 		<dict>
 			<key>cdhash</key>
 			<data>
-			ltPE3amCesOQemoGiMdfi758Feo=
+			tw3E2obSSf3BTOnLzc6V6xDjR0c=
 			</data>
 			<key>requirement</key>
 			<string>identifier manifest and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = Y69CWUC25B</string>

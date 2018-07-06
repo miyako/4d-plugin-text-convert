@@ -4,71 +4,88 @@
 	"commands": [
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU GET ENCODING LIST(&Y)"
+							 "syntax": "ICU GET ENCODING LIST(&Y)",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU Get good encodings(&O;&Y;&Y;&Y):L"
+							 "syntax": "ICU Get good encodings(&O;&Y;&Y;&Y):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU Get best encoding(&O;&T;&T;&L):L"
+							 "syntax": "ICU Get best encoding(&O;&T;&T;&L):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU Normalize text(&T;&L;&T):L"
+							 "syntax": "ICU Normalize text(&T;&L;&T):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU Transform text(&T;&T;&L;&T;&T):L"
+							 "syntax": "ICU Transform text(&T;&T;&L;&T;&T):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU Get error text(&L):T"
+							 "syntax": "ICU Get error text(&L):T",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU Convert to text(&O;&T;&T):L"
+							 "syntax": "ICU Convert to text(&O;&T;&T):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICU",
-							 "syntax": "ICU Convert from text(&T;&T;&O):L"
+							 "syntax": "ICU Convert from text(&T;&T;&O):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICONV",
-							 "syntax": "ICONV Convert(&T;&T;&O;&O):L"
+							 "syntax": "ICONV Convert(&T;&T;&O;&O):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "JIS",
-							 "syntax": "JIS Convert to text(&O;&L):T"
+							 "syntax": "JIS Convert to text(&O;&L):T",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "JIS",
-							 "syntax": "JIS Convert from text(&T;&L):O"
+							 "syntax": "JIS Convert from text(&T;&L):O",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "ICONV",
-							 "syntax": "ICONV GET ENCODING LIST(&Y)"
+							 "syntax": "ICONV GET ENCODING LIST(&Y)",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "CP",
-							 "syntax": "CP GET ENCODING LIST(&Y;&Y)"
+							 "syntax": "CP GET ENCODING LIST(&Y;&Y)",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "CP",
-							 "syntax": "CP Get best encoding(&O;&L):L"
+							 "syntax": "CP Get best encoding(&O;&L):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "CP",
-							 "syntax": "CP Convert from text(&T;&O;&L):L"
+							 "syntax": "CP Convert from text(&T;&O;&L):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "CP",
-							 "syntax": "CP Convert to text(&O;&T;&L):L"
+							 "syntax": "CP Convert to text(&O;&T;&L):L",
+							 "threadSafe": true
 							 },
 							 {
 							 "theme": "CP",
-							 "syntax": "CP Get good encodings(&O;&Y):L"
+							 "syntax": "CP Get good encodings(&O;&Y):L",
+							 "threadSafe": true
 							 }
 							 ]
 }
