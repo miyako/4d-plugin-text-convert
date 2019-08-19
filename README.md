@@ -26,7 +26,7 @@ In addition, there are commands to guess the possible encoding of a string, perf
 
 ### Releases
 
-[3.0](https://github.com/miyako/4d-plugin-text-convert/releases/tag/3.0) libc  
+[3.1](https://github.com/miyako/4d-plugin-text-convert/releases/tag/3.1) libc  
 
 [2.1](https://github.com/miyako/4d-plugin-text-convert/releases/tag/2.1) thread safe
 
