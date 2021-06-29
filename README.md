@@ -11,8 +11,6 @@ A plugin to perform various text convert operartions that are not currently supp
 
 based on [iconv](https://www.gnu.org/software/libiconv/) and [ICU](http://site.icu-project.org/home)
 
-~~LIBJPNとの違いについては[blog](http://www.4d.com/jp/blog/text-convert.html)を参照してください~~
-
 About
 ---
 The native 4D commands **CONVERT FROM TEXT** and **Convert to text** supports various encodings, as listed [here](http://doc.4d.com/4Dv14R4/4D/14-R4/CONVERT-FROM-TEXT.301-1708428.en.html), but some encodings such as EUC-JP and ISO-2022-JP-1 are not supported.
