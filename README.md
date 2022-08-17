@@ -3,8 +3,6 @@
 [![license](https://img.shields.io/github/license/miyako/4d-plugin-text-convert)](LICENSE)
 ![downloads](https://img.shields.io/github/downloads/miyako/4d-plugin-text-convert/total)
 
-**Note**: for v17 and earlier, move `manifest.json` to `Contents`
-
 # 4d-plugin-text-convert
 
 A plugin to perform various text convert operartions that are not currently support in 4D
