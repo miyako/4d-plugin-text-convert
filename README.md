@@ -19,7 +19,7 @@ In addition, there are commands to guess the possible encoding of a string, perf
 
 * Get the list of applicable encodings
 
-```
+```4d
 ARRAY LONGINT($codes;0)
 ARRAY TEXT($names;0)
 
@@ -27,14 +27,14 @@ CP GET ENCODING LIST ($codes;$names)
   //147 on Win7 (JA) and 91 on OS X 10.10
 ```
 
-```
+```4d
 ARRAY TEXT($names;0)
 
 ICU GET ENCODING LIST ($names)
   //231 on both Windows 7 and OS X 10.10
 ```
 
-```
+```4d
 ARRAY TEXT($names;0)
 
 ICONV GET ENCODING LIST ($names)
@@ -43,17 +43,17 @@ ICONV GET ENCODING LIST ($names)
 
 * Convert to EUC-JP and back
 
-```
+```4d
 $err:=CP Convert from text ("あいうえお";$euc;51932)
 $err:=CP Convert to text ($euc;$unicode;51932)
 ```
 
-```
+```4d
 $err:=ICU Convert from text ("あいうえお";"euc-jp-2007";$euc)
 $err:=ICU Convert to text ($euc;"euc-jp-2007";$unicode)
 ```
 
-```
+```4d
 TEXT TO BLOB("あいうえお";$utf8;UTF8 text without length)
 $err:=ICONV Convert ("utf-8";"euc-jp";$utf8;$euc)
 $err:=ICONV Convert ("euc-jp";"utf-8";$euc;$utf8)
@@ -65,7 +65,7 @@ JIS
 
 Various wayst to encode JIS (not to be confused with ISO-2022-JP).
 
-```
+```4d
 $test1:=JIS Convert from text ("ｱ";JIS7_ESC)
 $result:=JIS Convert to text ($test1;JIS7_ESC)
 ALERT($result)
@@ -88,7 +88,7 @@ ICU
 
 * Transliteration
 
-```
+```4d
 $src:="ﾊﾝｶｸゼンカクひらがな"
 $id:="[:East Asian Width=Halfwidth:];Katakana-Hiragana"
 $rule:=""
@@ -96,7 +96,7 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //はんかくゼンカクひらがな
 ```
 
-```
+```4d
 $src:="Kaloudis"
 $id:="Latin-Cyrillic"
 $rule:=""
@@ -104,14 +104,14 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //Калоудис
 ```
 
-```
+```4d
 $src:="株式会社４Ｄジャパン渋谷区道玄坂１ー１０ー２"
 $id:="[:^Katakana:];Fullwidth-Halfwidth"
 $rule:=""
   //株式会社4Dジャパン渋谷区道玄坂1ｰ10ｰ2
 ```
 
-```
+```4d
 $src:="カキクケコ"
 $id:="Katakana-Hiragana"
 $rule:=""
@@ -119,7 +119,7 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //かきくけこ
 ```
 
-```
+```4d
 $src:="それは12345ですか"
 $id:=""
 $rule:="[:^Number:] > ; # 数字だけを抜き取るぞ"
@@ -127,7 +127,7 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //12345
 ```
 
-```
+```4d
 $src:="abcde"
 $id:=""
 $rule:="a > A; # aをAに変換するだけだ"
@@ -135,7 +135,7 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
   //Abcde
 ```
 
-```
+```4d
 $src:="トランスフォームデスネ"
 $id:="-Latin"
 $rule:=""
@@ -145,7 +145,7 @@ $error:=ICU Transform text ($id;$rule;ICU Transform Forward;$src;$dst)
 
 * Normalization
 
-```
+```4d
 $error:=ICU Normalize text ("ががが";ICU Normalize NFD;$normalized)
 $length:=Length($normalized)
   //6; because NFD splits "が" to letters and combining accent characters
@@ -153,12 +153,12 @@ $length:=Length($normalized)
 
 * Detect
 
-```
+```4d
 $err:=ICU Convert from text ("あいうえお";"euc-jp-2007";$euc)
 $err:=ICU Get good encodings ($euc;$encodings;$languages;$confidences)
 ```
 
-```
+```4d
 $err:=CP Convert from text ("あいうえお";$euc;51932)
 $err:=CP Get good encodings ($euc;$codepages)
 ```
