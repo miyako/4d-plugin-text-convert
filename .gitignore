@@ -1,3 +1,6 @@
 build/*
 test/userPreferences.*
 test/Project/DerivedData/*
+Objs/*
+.vs/*
+Text Convert.vcxproj.user
