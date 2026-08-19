@@ -216,6 +216,7 @@ void ICU_Get_good_encodings(PA_PluginParameters params) {
     
     UErrorCode error = U_ZERO_ERROR;
     
+    try {
     UCharsetDetector *detector = ucsdet_open(&error);
     
     if(!error){
@@ -258,6 +259,9 @@ void ICU_Get_good_encodings(PA_PluginParameters params) {
     }else{
         returnValue.setIntValue(error);
     }
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
+    }
     
     names.toParamAtIndex(pParams, 2);
     languages.toParamAtIndex(pParams, 3);
@@ -280,6 +284,7 @@ void ICU_Get_best_encoding(PA_PluginParameters params) {
     
     UErrorCode error = U_ZERO_ERROR;
     
+    try {
     UCharsetDetector *detector = ucsdet_open(&error);
     
     if(!error){
@@ -313,6 +318,9 @@ void ICU_Get_best_encoding(PA_PluginParameters params) {
     }else{
         returnValue.setIntValue(error);
     }
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
+    }
     
     name.toParamAtIndex(pParams, 2);
     language.toParamAtIndex(pParams, 3);
@@ -335,6 +343,7 @@ void ICU_Normalize_text(PA_PluginParameters params) {
     
     UErrorCode error = U_ZERO_ERROR;
     
+    try {
     const char *name;
     UNormalization2Mode mode;
     
@@ -405,6 +414,9 @@ void ICU_Normalize_text(PA_PluginParameters params) {
     }else{
         returnValue.setIntValue(error);
     }
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
+    }
     
     targetText.toParamAtIndex(pParams, 3);
     returnValue.setReturn(pResult);
@@ -430,6 +442,7 @@ void ICU_Transform_text(PA_PluginParameters params) {
     
     UErrorCode error = U_ZERO_ERROR;
     
+    try {
     const UChar *transId = (UChar *)tId.getUTF16StringPtr();
     int32_t idLength = tId.getUTF16Length();
     
@@ -502,6 +515,9 @@ void ICU_Transform_text(PA_PluginParameters params) {
     }else{
         returnValue.setIntValue(error);
     }
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
+    }
     
     targetText.toParamAtIndex(pParams, 5);
     returnValue.setReturn(pResult);
@@ -539,6 +555,7 @@ void ICU_Convert_to_text(PA_PluginParameters params) {
     
     UErrorCode error = U_ZERO_ERROR;
     
+    try {
     CUTF8String sourceEncoding;
     encodingName.copyUTF8String(&sourceEncoding);
     
@@ -568,6 +585,9 @@ void ICU_Convert_to_text(PA_PluginParameters params) {
     }else{
         returnValue.setIntValue(error);
     }
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
+    }
     
     targetText.toParamAtIndex(pParams, 3);
     returnValue.setReturn(pResult);
@@ -588,6 +608,7 @@ void ICU_Convert_from_text(PA_PluginParameters params) {
     
     UErrorCode error = U_ZERO_ERROR;
     
+    try {
     CUTF8String targetEncoding;
     encodingName.copyUTF8String(&targetEncoding);
     
@@ -596,32 +617,46 @@ void ICU_Convert_from_text(PA_PluginParameters params) {
     if(!error)
     {
         int32_t  sourceLength = sourceText.getUTF16Length();
-        int32_t  targetLength = ((sourceLength + 1) * ucnv_getMaxCharSize(converter));
+        int8_t   maxCharSize = ucnv_getMaxCharSize(converter);
         
-        std::vector<uint8_t> buf(targetLength);
-        
-        char *target = (char *)&buf[0];
-        const UChar *source = (UChar *)sourceText.getUTF16StringPtr();
-        
-        int32_t len = ucnv_fromUChars(converter, target, targetLength, source, sourceLength, &error);
-        
-        switch (error)
+        //guard against (sourceLength + 1) * maxCharSize overflowing int32_t before it's used to size an allocation
+        if(sourceLength < 0 || maxCharSize <= 0 ||
+           sourceLength > (INT32_MAX / maxCharSize) - 1)
         {
-            case U_ZERO_ERROR:
-                targetData.setBytes((const uint8_t *)&buf[0], len);
-                break;
-            case U_STRING_NOT_TERMINATED_WARNING:
-                targetData.setBytes((const uint8_t *)&buf[0], len);
-                break;
-            default:
-                returnValue.setIntValue(error);
-                break;
+            returnValue.setIntValue(ERR_CONVERSION_FAILED);
+        }
+        else
+        {
+            int32_t targetLength = ((sourceLength + 1) * maxCharSize);
+            
+            std::vector<uint8_t> buf(targetLength);
+            
+            char *target = (char *)&buf[0];
+            const UChar *source = (UChar *)sourceText.getUTF16StringPtr();
+            
+            int32_t len = ucnv_fromUChars(converter, target, targetLength, source, sourceLength, &error);
+            
+            switch (error)
+            {
+                case U_ZERO_ERROR:
+                    targetData.setBytes((const uint8_t *)&buf[0], len);
+                    break;
+                case U_STRING_NOT_TERMINATED_WARNING:
+                    targetData.setBytes((const uint8_t *)&buf[0], len);
+                    break;
+                default:
+                    returnValue.setIntValue(error);
+                    break;
+            }
         }
         
         ucnv_close(converter);
         
     }else{
         returnValue.setIntValue(error);
+    }
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
     }
     
     targetData.toParamAtIndex(pParams, 3);
@@ -655,6 +690,7 @@ void ICONV_Convert(PA_PluginParameters params) {
     
     iconv_t conv_desc = iconv_open (outEncoding, inEncoding);
     
+    try {
     if ((size_t)conv_desc == (size_t) -1)
     {
         returnValue.setIntValue(errno);
@@ -668,18 +704,28 @@ void ICONV_Convert(PA_PluginParameters params) {
         char *outData = (char *)calloc(outDataLen, 1);
         char *outDataPtr = outData;
         
-        size_t iconv_value;
-                
-        iconv_value = iconv (conv_desc, &inData, &inDataLen, &outData, &outDataLen);
-        
-        if (iconv_value)
+        if(!outData)
         {
-            returnValue.setIntValue(errno);
-        }else{
-            Param4.setBytes((const uint8_t *)outDataPtr, (unsigned int)(outDataSize-outDataLen));
+            returnValue.setIntValue(ERR_CONVERSION_FAILED);
         }
-        free(outDataPtr);
+        else
+        {
+            size_t iconv_value;
+                    
+            iconv_value = iconv (conv_desc, &inData, &inDataLen, &outData, &outDataLen);
+            
+            if (iconv_value == (size_t)-1)
+            {
+                returnValue.setIntValue(errno);
+            }else{
+                Param4.setBytes((const uint8_t *)outDataPtr, (unsigned int)(outDataSize-outDataLen));
+            }
+            free(outDataPtr);
+        }
         iconv_close (conv_desc);
+    }
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
     }
     
     Param4.toParamAtIndex(pParams, 4);
@@ -725,6 +771,7 @@ static void JIS_TO_ISO(C_BLOB *data, int type) {
                 if(pos != std::string::npos)
                 {
                     result.append(str.substr(found, pos-found));
+                    result.append("\x1B\x28\x4A");
                     found = pos + 1;
                 }
             }
@@ -790,7 +837,6 @@ static void ISO_TO_JIS(C_BLOB *data, int type) {
                 {
                     result.append(str.substr(found, pos-found));
                     result.append("\x0F");
-                    result.append(str.substr(found+1, 3));
                     found = pos + 3;
                 }else
                 {
@@ -847,6 +893,7 @@ void JIS_Convert_to_text(PA_PluginParameters params) {
     Param1.fromParamAtIndex(pParams, 1);
     Param2.fromParamAtIndex(pParams, 2);
 
+    try {
     JIS_TO_ISO(&Param1, Param2.getIntValue());
     
 #if VERSIONMAC
@@ -879,6 +926,9 @@ void JIS_Convert_to_text(PA_PluginParameters params) {
         mlang->Release();
     }
 #endif
+    } catch(...) {
+        //returnValue stays at its default (empty) value
+    }
 
     returnValue.setReturn(pResult);
 
@@ -896,6 +946,7 @@ void JIS_Convert_from_text(PA_PluginParameters params) {
     Param1.fromParamAtIndex(pParams, 1);
     Param2.fromParamAtIndex(pParams, 2);
 
+    try {
 #if VERSIONMAC
     
     NSMutableString *str = [[NSMutableString alloc]initWithCharacters:Param1.getUTF16StringPtr() length:Param1.getUTF16Length()];
@@ -905,7 +956,6 @@ void JIS_Convert_from_text(PA_PluginParameters params) {
         NSData *data = [str dataUsingEncoding:NSISO2022JPStringEncoding allowLossyConversion:NO];
         returnValue.setBytes((const uint8_t *)[data bytes], (uint32_t)[data length]);
         ISO_TO_JIS(&returnValue, Param2.getIntValue());
-        returnValue.setReturn(pResult);
         [str release];
     }
     
@@ -927,12 +977,14 @@ void JIS_Convert_from_text(PA_PluginParameters params) {
             mlang->ConvertStringFromUnicode(&mode, 50221, (LPWSTR)Param1.getUTF16StringPtr(), (UINT *)&ulen, (CHAR *)&buf[0], (UINT *)&mlen);
             returnValue.setBytes((const uint8_t *)&buf[0], (uint32_t)mlen);
             ISO_TO_JIS(&returnValue, Param2.getIntValue());
-            returnValue.setReturn(pResult);
         }
         mlang->Release();
     }
     
 #endif
+    } catch(...) {
+        //returnValue stays at its default (empty) value
+    }
 
     returnValue.setReturn(pResult);
 
@@ -967,6 +1019,7 @@ void CP_Get_best_encoding(PA_PluginParameters params) {
     char *data = (char *)Param1.getBytesPtr();
     size_t size = Param1.getBytesLength();
     
+    try {
 #if VERSIONWIN
     
     IMultiLanguage2 *mlang = NULL;
@@ -980,17 +1033,26 @@ void CP_Get_best_encoding(PA_PluginParameters params) {
         
         //no HRESULT?
         INT confidence = 0;
+        bool found = false;
         for(int i = 0; i < scores ; ++i)
         {
             if(encodings[i].nLangID != 0)
             {
-                if(confidence < encodings[i].nConfidence){
+                if(!found || confidence < encodings[i].nConfidence){
                     Param2.setIntValue(encodings[i].nCodePage);
+                    confidence = encodings[i].nConfidence;
+                    found = true;
                 }
             }
         }
 
+        if(!found){
+            returnValue.setIntValue(ERR_DETECTION_FAILED);
+        }
+
         mlang->Release();
+    }else{
+        returnValue.setIntValue(ERR_DETECTION_FAILED);
     }
 #else
     
@@ -1043,8 +1105,28 @@ void CP_Get_best_encoding(PA_PluginParameters params) {
                 
                 std::vector<char> buf(len);
                 
-                if(!GetTextEncodingName(
-                                        encodings[0],
+                //pick the candidate with the fewest sniff errors, then the most recognized features
+                ItemCount bestIndex = numTextEncodings;
+                ItemCount bestErrs = 0;
+                ItemCount bestFeatures = 0;
+                for(ItemCount i = 0; i < numTextEncodings; ++i)
+                {
+                    if(bestIndex == numTextEncodings ||
+                       numErrsArray[i] < bestErrs ||
+                       (numErrsArray[i] == bestErrs && numFeaturesArray[i] > bestFeatures))
+                    {
+                        bestIndex = i;
+                        bestErrs = numErrsArray[i];
+                        bestFeatures = numFeaturesArray[i];
+                    }
+                }
+                
+                if(bestIndex == numTextEncodings)
+                {
+                    returnValue.setIntValue(ERR_DETECTION_FAILED);
+                }
+                else if(!GetTextEncodingName(
+                                        encodings[bestIndex],
                                         kTextEncodingFullName,
                                         0,
                                         unicode,
@@ -1060,10 +1142,16 @@ void CP_Get_best_encoding(PA_PluginParameters params) {
                         UInt32 codepage = TextEncodingNameToWindowsCodepage(name);
                         if(codepage > 0){
                             Param2.setIntValue(codepage);
+                        }else{
+                            returnValue.setIntValue(ERR_DETECTION_FAILED);
                         }
                         CFRelease(name);
+                    }else{
+                        returnValue.setIntValue(ERR_DETECTION_FAILED);
                     }
                     
+                }else{
+                    returnValue.setIntValue(ERR_DETECTION_FAILED);
                 }
                 
             }
@@ -1074,6 +1162,9 @@ void CP_Get_best_encoding(PA_PluginParameters params) {
     }
     
 #endif
+    } catch(...) {
+        returnValue.setIntValue(ERR_DETECTION_FAILED);
+    }
 
     Param2.toParamAtIndex(pParams, 2);
     returnValue.setReturn(pResult);
@@ -1094,6 +1185,7 @@ void CP_Convert_from_text(PA_PluginParameters params) {
     Param2.fromParamAtIndex(pParams, 2);
     Param3.fromParamAtIndex(pParams, 3);
 
+    try {
 #if VERSIONMAC
     
     CFStringEncoding encoding = _CFStringConvertWindowsCodepageToEncoding(Param3.getIntValue());
@@ -1147,9 +1239,14 @@ void CP_Convert_from_text(PA_PluginParameters params) {
         }
         
         mlang->Release();
+    }else{
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
     }
     
 #endif
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
+    }
     
     Param2.toParamAtIndex(pParams, 2);
     returnValue.setReturn(pResult);
@@ -1169,6 +1266,7 @@ void CP_Convert_to_text(PA_PluginParameters params) {
     Param1.fromParamAtIndex(pParams, 1);
     Param3.fromParamAtIndex(pParams, 3);
 
+    try {
 #if VERSIONMAC
     
     CFStringEncoding encoding = _CFStringConvertWindowsCodepageToEncoding(Param3.getIntValue());
@@ -1207,8 +1305,8 @@ void CP_Convert_to_text(PA_PluginParameters params) {
             mapping.otherEncoding = textEncoding;
             mapping.unicodeEncoding = kTextEncodingUnicodeDefault;
             mapping.mappingVersion = kUnicodeUseLatestMapping;
-            TextToUnicodeInfo info;
-            CreateTextToUnicodeInfoByEncoding(textEncoding,&info);
+            TextToUnicodeInfo info = NULL;
+            OSStatus infoStatus = CreateTextToUnicodeInfoByEncoding(textEncoding,&info);
             ByteCount sourceLen = Param1.getBytesLength();
             ConstLogicalAddress source = Param1.getBytesPtr();
             ByteCount lengthRead = 0;
@@ -1217,7 +1315,7 @@ void CP_Convert_to_text(PA_PluginParameters params) {
             unsigned int size = (unsigned int)((sourceLen * 4) + 1);
             std::vector<uint8_t> buf(size);
             
-            if(info)
+            if(infoStatus == noErr && info)
             {
                 ConvertFromTextToUnicode(info,
                                          sourceLen,
@@ -1231,13 +1329,14 @@ void CP_Convert_to_text(PA_PluginParameters params) {
                                          &lengthRead,
                                          &lengthReturned,
                                          (UniChar *)&buf[0]);
+                DisposeTextToUnicodeInfo(&info);
             }
             
             else{
                 //try even older API
-                TECObjectRef converter;
-                TECCreateConverter(&converter, textEncoding, kTextEncodingUnicodeDefault);
-                if(converter)
+                TECObjectRef converter = NULL;
+                if(!TECCreateConverter(&converter, textEncoding, kTextEncodingUnicodeDefault) && converter)
+                {
                     TECConvertText(converter,
                                    (ConstTextPtr)source,
                                    sourceLen,
@@ -1245,10 +1344,12 @@ void CP_Convert_to_text(PA_PluginParameters params) {
                                    (TextPtr)&buf[0],
                                    size,
                                    &lengthReturned);
+                    TECDisposeConverter(converter);
+                }
                 
             }
             
-            str = [[NSString alloc]initWithBytes:(const void *)&buf[0] length:size encoding:NSUnicodeStringEncoding];
+            str = [[NSString alloc]initWithBytes:(const void *)&buf[0] length:lengthReturned encoding:NSUnicodeStringEncoding];
             
             if(str)
             {
@@ -1302,9 +1403,14 @@ void CP_Convert_to_text(PA_PluginParameters params) {
         }
         
         mlang->Release();
+    }else{
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
     }
     
 #endif
+    } catch(...) {
+        returnValue.setIntValue(ERR_CONVERSION_FAILED);
+    }
 
     Param2.toParamAtIndex(pParams, 2);
     returnValue.setReturn(pResult);
@@ -1326,6 +1432,7 @@ void CP_Get_good_encodings(PA_PluginParameters params) {
     char *data = (char *)Param1.getBytesPtr();
     size_t size = Param1.getBytesLength();
     
+    try {
 #if VERSIONWIN
     
     IMultiLanguage2 *mlang = NULL;
@@ -1347,6 +1454,8 @@ void CP_Get_good_encodings(PA_PluginParameters params) {
         }
 
         mlang->Release();
+    }else{
+        returnValue.setIntValue(ERR_DETECTION_FAILED);
     }
 #else
         
@@ -1402,7 +1511,7 @@ void CP_Get_good_encodings(PA_PluginParameters params) {
                     PA_YieldAbsolute();
                     
                     if(numErrsArray[i]){
-                        break;
+                        continue;
                     }else{
                         std::vector<char> buf(len);
                         
@@ -1441,6 +1550,9 @@ void CP_Get_good_encodings(PA_PluginParameters params) {
     }
     
 #endif
+    } catch(...) {
+        returnValue.setIntValue(ERR_DETECTION_FAILED);
+    }
     
     Param2.toParamAtIndex(pParams, 2);
     returnValue.setReturn(pResult);
