@@ -4,3 +4,5 @@ test/Project/DerivedData/*
 Objs/*
 .vs/*
 Text Convert.vcxproj.user
+Text Convert.dmg
+Text Convert.zip
